@@ -1,0 +1,63 @@
+int data;
+int led1=A0;
+int led2=A1;
+int led3=A2;
+int led4=A3;
+
+int c1=2;
+int c2=3;
+int c3=4;
+int c4=5;
+int A=6;
+int B=7;
+int C=8;
+int D=9;
+int E=10;
+int F=12;
+int G=11;
+int dot=13;
+
+void setup() {
+  // Seting pin mode and serial
+  pinMode(led1,OUTPUT);
+  pinMode(led2,OUTPUT);
+  pinMode(led3,OUTPUT);
+  pinMode(led4, OUTPUT);
+  pinMode(c1, OUTPUT);
+  pinMode(c2, OUTPUT);
+  pinMode(c3, OUTPUT);
+  pinMode(c4, OUTPUT);
+  pinMode(A, OUTPUT);
+  pinMode(B, OUTPUT);
+  pinMode(C, OUTPUT);
+  pinMode(D, OUTPUT);
+  pinMode(E, OUTPUT);
+  pinMode(F, OUTPUT);
+  pinMode(G, OUTPUT);
+  pinMode(dot, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Receiving data, update display and leds
+  if(Serial.available())
+  {
+    int data = Serial.read();
+    if(data==49){
+      digitalWrite(led1,HIGH);}
+    if(data==50){  
+      digitalWrite(led1,LOW);}
+    if(data==51){
+      digitalWrite(led2,HIGH);}
+    if(data==52){  
+      digitalWrite(led2,LOW);}
+    if(data==53){
+      digitalWrite(led3,HIGH);}
+    if(data==54){
+      digitalWrite(led3,LOW);}
+    if(data==55){
+      digitalWrite(led4,HIGH);}
+    if(data==56){
+      digitalWrite(led4,LOW);}
+  }
+}
