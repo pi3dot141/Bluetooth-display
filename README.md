@@ -3,8 +3,8 @@
 
 [en] The goal of this project is creating simple electrical system which remotly control display from desktop or phone via Bluetooth
 
-Mikrokontroler \ microcontroler: Arduino Uno
-Moduł Bluetooth \ BT module: HC-06
-Wyświetlacz \ Display: KYX-3461AS
-Aplikacja na komputer \ Desktop App: Python (Tkinter, Serial)
+Mikrokontroler \ microcontroler: Arduino Uno <br>
+Moduł Bluetooth \ BT module: HC-06 <br>
+Wyświetlacz \ Display: KYX-3461AS <br>
+Aplikacja na komputer \ Desktop App: Python (Tkinter, Serial) <br>
 Aplikacja na telefon \ Phone App: ?
