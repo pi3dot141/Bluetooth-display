@@ -8,6 +8,14 @@ int c1=2;
 int c2=3;
 int c3=4;
 int c4=5;
+int d1=10;
+int d2=10;
+int d3=10;
+int d4=10;
+int e1=0;
+int e2=0;
+int e3=0;
+int e4=0;
 int A=6;
 int B=7;
 int C=8;
@@ -18,7 +26,7 @@ int G=11;
 int dot=13;
 
 void setup() {
-  // Seting pin mode and serial
+  // put your setup code here, to run once:
   pinMode(led1,OUTPUT);
   pinMode(led2,OUTPUT);
   pinMode(led3,OUTPUT);
@@ -39,25 +47,209 @@ void setup() {
 }
 
 void loop() {
-  // Receiving data, update display and leds
+  // put your main code here, to run repeatedly:
   if(Serial.available())
   {
     int data = Serial.read();
-    if(data==49){
-      digitalWrite(led1,HIGH);}
-    if(data==50){  
-      digitalWrite(led1,LOW);}
-    if(data==51){
-      digitalWrite(led2,HIGH);}
-    if(data==52){  
-      digitalWrite(led2,LOW);}
-    if(data==53){
-      digitalWrite(led3,HIGH);}
-    if(data==54){
-      digitalWrite(led3,LOW);}
-    if(data==55){
-      digitalWrite(led4,HIGH);}
-    if(data==56){
-      digitalWrite(led4,LOW);}
+    if(data<=96){
+      if (data/16>=1 & data/16<2){
+        d1=data-16;
+      }
+      if (data/16>=1 & data/16<2){
+        d2=data-32;
+      }
+      if (data/16>=1 & data/16<2){
+        d3=data-48;
+      }
+      if (data/16>=1 & data/16<2){
+        d4=data-64;
+      }
+    }
+    if(data>96){
+      if(data==96){
+        digitalWrite(led1,HIGH);}
+      if(data==97){  
+        digitalWrite(led1,LOW);}
+      if(data==98){
+        digitalWrite(led2,HIGH);}
+      if(data==99){  
+        digitalWrite(led2,LOW);}
+      if(data==100){
+        digitalWrite(led3,HIGH);}
+      if(data==101){
+        digitalWrite(led3,LOW);}
+      if(data==102){
+        digitalWrite(led4,HIGH);}
+      if(data==103){
+        digitalWrite(led4,LOW);}
+    }
   }
+  Decode_Number(d1, 1, e1);
+  delay(1);
+  Decode_Number(d2, 2, e2);
+  delay(1);
+  Decode_Number(d3, 3, e3);
+  delay(1);
+  Decode_Number(d4, 4, e4);
+  delay(1);
+}
+
+int Decode_Number (int x, int y, int z){
+  if (y==1){
+    digitalWrite(c1, LOW);
+    digitalWrite(c2, HIGH);
+    digitalWrite(c3, HIGH);
+    digitalWrite(c4, HIGH);
+  }
+
+  if (y==2){
+    digitalWrite(c1, HIGH);
+    digitalWrite(c2, LOW);
+    digitalWrite(c3, HIGH);
+    digitalWrite(c4, HIGH);
+  }
+
+  if (y==3){
+    digitalWrite(c1, HIGH);
+    digitalWrite(c2, HIGH);
+    digitalWrite(c3, LOW);
+    digitalWrite(c4, HIGH);
+  }
+
+  if (y==4){
+    digitalWrite(c1, HIGH);
+    digitalWrite(c2, HIGH);
+    digitalWrite(c3, HIGH);
+    digitalWrite(c4, LOW);
+  }
+  
+  if (x==1){
+    digitalWrite(A, LOW);
+    digitalWrite(B, HIGH);
+    digitalWrite(C, HIGH);
+    digitalWrite(D, LOW);
+    digitalWrite(E, LOW);
+    digitalWrite(F, LOW);
+    digitalWrite(G, LOW);
+  }
+
+  if (x==2){
+    digitalWrite(A, HIGH);
+    digitalWrite(B, HIGH);
+    digitalWrite(C, LOW);
+    digitalWrite(D, HIGH);
+    digitalWrite(E, HIGH);
+    digitalWrite(F, LOW);
+    digitalWrite(G, HIGH);
+  }
+
+  if (x==3){
+    digitalWrite(A, HIGH);
+    digitalWrite(B, HIGH);
+    digitalWrite(C, HIGH);
+    digitalWrite(D, HIGH);
+    digitalWrite(E, LOW);
+    digitalWrite(F, LOW);
+    digitalWrite(G, HIGH);
+  }
+
+  if (x==4){
+    digitalWrite(A, LOW);
+    digitalWrite(B, HIGH);
+    digitalWrite(C, HIGH);
+    digitalWrite(D, LOW);
+    digitalWrite(E, LOW);
+    digitalWrite(F, HIGH);
+    digitalWrite(G, HIGH);
+  }
+
+  if (x==5){
+    digitalWrite(A, HIGH);
+    digitalWrite(B, LOW);
+    digitalWrite(C, HIGH);
+    digitalWrite(D, HIGH);
+    digitalWrite(E, LOW);
+    digitalWrite(F, HIGH);
+    digitalWrite(G, HIGH);
+  }
+
+  if (x==6){
+    digitalWrite(A, HIGH);
+    digitalWrite(B, LOW);
+    digitalWrite(C, HIGH);
+    digitalWrite(D, HIGH);
+    digitalWrite(E, HIGH);
+    digitalWrite(F, HIGH);
+    digitalWrite(G, HIGH);
+  }
+
+  if (x==7){
+    digitalWrite(A, HIGH);
+    digitalWrite(B, HIGH);
+    digitalWrite(C, HIGH);
+    digitalWrite(D, LOW);
+    digitalWrite(E, LOW);
+    digitalWrite(F, LOW);
+    digitalWrite(G, LOW);
+  }
+
+  if (x==8){
+    digitalWrite(A, HIGH);
+    digitalWrite(B, HIGH);
+    digitalWrite(C, HIGH);
+    digitalWrite(D, HIGH);
+    digitalWrite(E, HIGH);
+    digitalWrite(F, HIGH);
+    digitalWrite(G, HIGH);
+  }
+
+  if (x==9){
+    digitalWrite(A, HIGH);
+    digitalWrite(B, HIGH);
+    digitalWrite(C, HIGH);
+    digitalWrite(D, HIGH);
+    digitalWrite(E, LOW);
+    digitalWrite(F, HIGH);
+    digitalWrite(G, HIGH);
+  }
+
+  if (x==0){
+    digitalWrite(A, HIGH);
+    digitalWrite(B, HIGH);
+    digitalWrite(C, HIGH);
+    digitalWrite(D, HIGH);
+    digitalWrite(E, HIGH);
+    digitalWrite(F, HIGH);
+    digitalWrite(G, LOW);
+  }
+
+  if (x==10){
+    digitalWrite(A, LOW);
+    digitalWrite(B, LOW);
+    digitalWrite(C, LOW);
+    digitalWrite(D, LOW);
+    digitalWrite(E, LOW);
+    digitalWrite(F, LOW);
+    digitalWrite(G, LOW);
+  }
+
+  if (x==11){
+    digitalWrite(A, HIGH);
+    digitalWrite(B, LOW);
+    digitalWrite(C, LOW);
+    digitalWrite(D, HIGH);
+    digitalWrite(E, HIGH);
+    digitalWrite(F, HIGH);
+    digitalWrite(G, HIGH);
+  }
+
+  if (z==1){
+    digitalWrite(dot, HIGH);
+  }
+
+  if (z==0){
+    digitalWrite(dot, LOW);
+  }
+  
+  return 0;
 }
