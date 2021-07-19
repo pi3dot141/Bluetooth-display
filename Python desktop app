@@ -22,19 +22,19 @@ class blue_app (tk.Frame):
     # Turn on/off buttons
 		red_txt = Label(self.root, text='Red')
 		red_txt.place(x=25, y=25, width=50, height=30)
-		red_btn = Button(self.root, text='Turn On', command=lambda:self.send_signal_r('A'))
+		red_btn = Button(self.root, text='Turn On', command=lambda:self.send_signal_r('60'))
 		red_btn.place(x=25, y=75, width=50, height=30)
 		yellow_txt = Label(self.root, text='Yellow')
 		yellow_txt.place(x=100, y=25, width=50, height=30)
-		yellow_btn = Button(self.root, text='Turn On', command=lambda:self.send_signal_y('C'))
+		yellow_btn = Button(self.root, text='Turn On', command=lambda:self.send_signal_y('62'))
 		yellow_btn.place(x=100, y=75, width=50, height=30)
 		green_txt = Label(self.root, text='Green')
 		green_txt.place(x=175, y=25, width=50, height=30)
-		green_btn = Button(self.root, text='Turn On', command=lambda:self.send_signal_g('E'))
+		green_btn = Button(self.root, text='Turn On', command=lambda:self.send_signal_g('64'))
 		green_btn.place(x=175, y=75, width=50, height=30)
 		blue_txt = Label(self.root, text='Blue')
 		blue_txt.place(x=250, y=25, width=50, height=30)
-		blue_btn = Button(self.root, text='Turn On', command=lambda:self.send_signal_b('G'))
+		blue_btn = Button(self.root, text='Turn On', command=lambda:self.send_signal_b('66'))
 		blue_btn.place(x=250, y=75, width=50, height=30)
     
     # Display control widgets
@@ -43,50 +43,50 @@ class blue_app (tk.Frame):
 		send_btn = Button(self.root, text='Display', command=lambda:self.send_number())
 		send_btn.place(x=100, y=125, width=50, height=30)
 		self.err_lbl = Label(self.root, text='')
-		self.err_lbl.place(x=170, y=125, width=60, height=30)
+		self.err_lbl.place(x=165, y=125, width=70, height=30)
 		quit_btn = Button(self.root, text='Quit', command=lambda:self.quit())
 		quit_btn.place(x=250, y=125, width=50, height=30)
 		
   # Sending signals to turn on/off leds 
 	def send_signal_r(self, n):  
-		self.serialPort.write(bytes(n,'utf-8'))
-		if n=='A':
-			red_btn = Button(self.root, text='Turn Off', command=lambda:self.send_signal_r('B'))
+		self.serialPort.write(bytes.fromhex(n))
+		if n=='60':
+			red_btn = Button(self.root, text='Turn Off', command=lambda:self.send_signal_r("61"))
 			red_btn.place(x=25, y=75, width=50, height=30)
 		else:
-			red_btn = Button(self.root, text='Turn On', command=lambda:self.send_signal_r('A'))
+			red_btn = Button(self.root, text='Turn On', command=lambda:self.send_signal_r("60"))
 			red_btn.place(x=25, y=75, width=50, height=30)
 			
 	def send_signal_y(self, n):  
-		self.serialPort.write(bytes(n,'utf-8'))
-		if n=='C':
-			yellow_btn = Button(self.root, text='Turn Off', command=lambda:self.send_signal_y('D'))
+		self.serialPort.write(bytes.fromhex(n))
+		if n=='62':
+			yellow_btn = Button(self.root, text='Turn Off', command=lambda:self.send_signal_y("63"))
 			yellow_btn.place(x=100, y=75, width=50, height=30)
 		else:
-			yellow_btn = Button(self.root, text='Turn On', command=lambda:self.send_signal_y('C'))
+			yellow_btn = Button(self.root, text='Turn On', command=lambda:self.send_signal_y("62"))
 			yellow_btn.place(x=100, y=75, width=50, height=30)
 			
 	def send_signal_g(self, n):  
-		self.serialPort.write(bytes(n,'utf-8'))
-		if n=='E':
-			green_btn = Button(self.root, text='Turn Off', command=lambda:self.send_signal_g('F'))
+		self.serialPort.write(bytes.fromhex(n))
+		if n=='64':
+			green_btn = Button(self.root, text='Turn Off', command=lambda:self.send_signal_g("65"))
 			green_btn.place(x=175, y=75, width=50, height=30)
 		else:
-			green_btn = Button(self.root, text='Turn On', command=lambda:self.send_signal_g('E'))
+			green_btn = Button(self.root, text='Turn On', command=lambda:self.send_signal_g("64"))
 			green_btn.place(x=175, y=75, width=50, height=30)
 			
 	def send_signal_b(self, n):  
-		self.serialPort.write(bytes(n,'utf-8'))
-		if n=='G':
-			blue_btn = Button(self.root, text='Turn Off', command=lambda:self.send_signal_b('H'))
+		self.serialPort.write(bytes.fromhex(n))
+		if n=='66':
+			blue_btn = Button(self.root, text='Turn Off', command=lambda:self.send_signal_b("67"))
 			blue_btn.place(x=250, y=75, width=50, height=30)
 		else:
-			blue_btn = Button(self.root, text='Turn On', command=lambda:self.send_signal_b('G'))
+			blue_btn = Button(self.root, text='Turn On', command=lambda:self.send_signal_b("66"))
 			blue_btn.place(x=250, y=75, width=50, height=30)
 	
   # Update number on display
 	def send_number(self, num=0):
-		i=0
+		i=1
 		num = self.num_ent.get()
 		l=len(num)
 		if l>4:
